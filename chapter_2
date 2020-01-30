@@ -1,0 +1,91 @@
+# Chapter 2  
+
+#Lists all available functions with foo in their name
+apropos("foo", mode="function") 
+
+# Lists all available example datasets contained in currently
+data() 
+
+# Lists the objects in the current workspace.
+ls() 
+
+#Lets you view or set current options.
+option()
+
+options(digits=3)
+x <- runif(20)
+summary(x)
+
+# Packages
+
+library()
+search()
+update.packages()
+help(package="package_name")
+
+# Matrices
+
+y <- matrix(1:20, nrow = 5, ncol=4)
+
+cells <- c(1,26,24,68)
+rnames <- c("R1", "R2")
+cnames <- c("C1", "C2")
+mymatrix <- matrix(cells, nrow = 2, ncol =2 , byrow = T,
+                   dimnames = list(rnames, cnames))
+
+# Array
+
+dim1 <- c("A1", "A2")
+dim2 <- c("B1", "B2", "B3")
+dim3 <- c("C1", "C2", "C3", "C4")
+z <- array(1:24, c(2,3,4), dimnames = list(dim1,
+                                           dim2,dim3))
+# Data Frames
+
+patientID <- c(1, 2, 3, 4)
+age <- c(25, 34, 28, 52)
+diabetes <- c("Type1", "Type2", "Type1", "Type1")
+status <- c("Poor", "Improved", "Excellent", "Poor")
+patientdata <- data.frame(patientID, age, diabetes, status)
+
+with(mtcars, {
+  keepstats <<- summary(mpg)
+})
+
+# Factor 
+
+diabetes <- c("Type1", "Type2", "Type1", "Type1")
+diabetes <- factor(diabetes)
+
+status <- c("Poor", "Improved", "Excellent", "Poor")
+status <- factor(status, ordered=TRUE)
+status <- factor(status, order=TRUE,
+                 levels=c("Poor", "Improved", "Excellent"))
+
+sex <- factor(sex, levels=c(1, 2), labels=c("Male", "Female"))
+
+# Variable Label
+
+names(patientdata)[2] <- "Age at hospitalization (in years)"
+
+# Value Label
+
+patientdata$gender <- factor(patientdata$gender,
+                             levels = c(1,2),
+                             labels = c("male", "female"))
+
+# Useful Function
+
+length(mtcars)
+dim(mtcars)
+str(mtcars)
+class(mtcars)
+mode(mtcars)
+names(mtcars)
+cbind(mtcars,1:32)
+rbind(mtcars, 1:2)
+head(mtcars)
+tail(mtcars)
+ls(mtcars)
+
+
